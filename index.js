@@ -8,16 +8,25 @@ const typeDefs = gql`
         age: Int!
     }
 
+    type Post {
+        id: ID!
+        title: String
+        content: String
+    }
+
     type Query {
-        allUsers: [User!]!
+        allUsers: [User!]!,
+        allPosts: [Post!]!
     }
 `;
 
-users = [{name: 'Abrar', age : 26}, {name: 'Test', age : 30}]
+users = [{name: 'Abrar', age : 26, id : '##$#$%REFDDFDSF'}, {name: 'Test', age : 30, id : '##$#$%REFDDFDSdfdfF'}]
+posts = [{title: 'Test Post', content: 'Test Post Description', id : '#$%$%$%$dse'}]
 
 const resolvers = {
     Query : {
-        allUsers : () => users
+        allUsers : () => users,
+        allPosts : () => posts
     }
 }
 
