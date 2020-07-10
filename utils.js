@@ -9,7 +9,7 @@ users = [{
 posts = [{ title: 'QraphQL', content: 'Demo for graphql', id: '#$%$%$%$dse' }, { title: 'Apollo Server', content: 'Demo for Apollo Server', id: '#$%$%$4545%$dse' },
 { title: 'Test Post1', content: 'Demo for Post1', id: '#$%$%$%$dse$#$' }, { title: 'Test Post2', content: 'Demo For Post2', id: 'DFDF#$#$#$#' }]
 
-const writeJSONToFile = function (destinationDir, object) {
+function writeJSONToFile(destinationDir, object) {
     fs.writeFile(`./${destinationDir}`, JSON.stringify(object), err => {
         if (err) {
             console.log('Error writing file', err)
@@ -19,17 +19,17 @@ const writeJSONToFile = function (destinationDir, object) {
     });
 }
 
-const readDataFromJSON = function (fileDir) {
+function readDataFromJSON(fileDir) {
     const jsonString = fs.readFileSync(`./${fileDir}`);
     const result = JSON.parse(jsonString)
     return result;
 }
 
-methods = { 'writeJSON': writeJSONToFile, 'readJSON': readDataFromJSON };
+methods = { writeJSONToFile, readDataFromJSON };
 //console.log(JSON.stringify(readDataFromJSON('data/users.json')));
 //writeJSONToFile('test.json', posts)
 
-exports.data = methods;
+module.exports = methods;
 
 
 

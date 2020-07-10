@@ -31,8 +31,8 @@ const typeDefs = gql`
     }
 `;
 
-users = utils.data.readJSON('data/users.json');
-posts = utils.data.readJSON('data/posts.json');
+users = utils.readDataFromJSON('data/users.json');
+posts = utils.readDataFromJSON('data/posts.json');
 
 function getUser(id, name) {
     return users.find(user => user.id === id || user.name === name);
