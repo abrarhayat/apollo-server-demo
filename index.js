@@ -30,10 +30,10 @@ const typeDefs = gql`
 `;
 
 users = [{
-    name: 'Abrar Hayat', age: 26, id: '##$#$%REFDDFDSF', skills: [{ name: 'Java', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPosts: [{ id: '#$%$%$%$dse' },
+    name: 'Abrar Hayat', age: 26, id: '##$#$%REFDDFDSF', skills: [{ name: 'Java', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPostsIds: [{ id: '#$%$%$%$dse' },
     { id: '#$%$%$4545%$dse' }]
-}, { name: 'Christopher Williams', age: 30, id: '##$#$%REFDDFDSdfdfF', skills: [{ name: 'Kotlin', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPosts: [{ id: '#$%$%$%$dse$#$' }] },
-{ name: 'Henry Burger', age: 35, id: '%$%$FDSGFGDFG', skills: [{ name: 'Kotlin', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPosts: [{ id: 'DFDF#$#$#$#' }] }]
+}, { name: 'Christopher Williams', age: 30, id: '##$#$%REFDDFDSdfdfF', skills: [{ name: 'Kotlin', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPostsIds: [{ id: '#$%$%$%$dse$#$' }] },
+{ name: 'Henry Burger', age: 35, id: '%$%$FDSGFGDFG', skills: [{ name: 'Kotlin', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPostsIds: [{ id: 'DFDF#$#$#$#' }] }]
 
 posts = [{ title: 'QraphQL', content: 'Demo for graphql', id: '#$%$%$%$dse' }, { title: 'Apollo Server', content: 'Demo for Apollo Server', id: '#$%$%$4545%$dse' },
 { title: 'Test Post1', content: 'Demo for Post1', id: '#$%$%$%$dse$#$' }, { title: 'Test Post2', content: 'Demo For Post2', id: 'DFDF#$#$#$#' }]
@@ -48,12 +48,11 @@ function getPost(id, title) {
 
 function getAllPostsFromUser(userId) {
     user = getUser(userId);
-    currentUserPostIds = user.userPosts;
-    finalPostList = [];
-    for (post of currentUserPostIds) {
-        finalPostList.push(getPost(post.id))
-    }
-    return finalPostList;
+    currentUserPostIds = user.userPostsIds;
+    allPostInfo = new Array();
+    currentUserPostIds.forEach((post) => {
+        allPostInfo.push(getPost(post.id))
+    })
 }
 
 const resolvers = {
