@@ -1,0 +1,43 @@
+# Write your query or mutation here
+query {
+  allUsers {
+    name
+    age
+    skills {
+      name
+      proficiency
+    }
+    posts {
+      id
+      title
+      content
+    }
+  }
+
+    allPosts {
+      title
+      content
+    }
+
+    # user(id: "##$#$%REFDDFDSF") {
+    #   name
+    #   age
+    #   id
+    # }
+
+  user(name: "Abrar Hayat") {
+    name
+    age
+    id
+    posts {
+      id
+      title
+      content
+    }
+  }
+
+  post(id: "#$%$%$4545%$dse") {
+    title
+    content
+  }
+}
