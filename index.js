@@ -1,4 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
+var utils = require('./utils');
+//console.log(utils)
 
 const typeDefs = gql`
 
@@ -29,14 +31,8 @@ const typeDefs = gql`
     }
 `;
 
-users = [{
-    name: 'Abrar Hayat', age: 26, id: '##$#$%REFDDFDSF', skills: [{ name: 'Java', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPostsIds: [{ id: '#$%$%$%$dse' },
-    { id: '#$%$%$4545%$dse' }]
-}, { name: 'Christopher Williams', age: 30, id: '##$#$%REFDDFDSdfdfF', skills: [{ name: 'Kotlin', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPostsIds: [{ id: '#$%$%$%$dse$#$' }] },
-{ name: 'Henry Burger', age: 35, id: '%$%$FDSGFGDFG', skills: [{ name: 'Kotlin', proficiency: 10 }, { name: 'Python', proficiency: 8 }], userPostsIds: [{ id: 'DFDF#$#$#$#' }] }]
-
-posts = [{ title: 'QraphQL', content: 'Demo for graphql', id: '#$%$%$%$dse' }, { title: 'Apollo Server', content: 'Demo for Apollo Server', id: '#$%$%$4545%$dse' },
-{ title: 'Test Post1', content: 'Demo for Post1', id: '#$%$%$%$dse$#$' }, { title: 'Test Post2', content: 'Demo For Post2', id: 'DFDF#$#$#$#' }]
+users = utils.data.readJSON('data/users.json');
+posts = utils.data.readJSON('data/posts.json');
 
 function getUser(id, name) {
     return users.find(user => user.id === id || user.name === name);
@@ -53,6 +49,7 @@ function getAllPostsFromUser(userId) {
     currentUserPostIds.forEach((post) => {
         allPostInfo.push(getPost(post.id))
     })
+    return allPostInfo;
 }
 
 const resolvers = {
@@ -75,6 +72,3 @@ const server = new ApolloServer({ typeDefs, resolvers })
 server.listen().then(({ url }) => {
     console.log(`Server started at ${url}`)
 });
-
-
-
