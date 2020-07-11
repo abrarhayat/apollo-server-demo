@@ -1,0 +1,13 @@
+#decalaring the fragment
+fragment userDetails on User {
+  id
+  name
+  age
+}
+
+query {
+  #calling the fragment 
+  allUsers{
+    ... userDetails
+  }
+}

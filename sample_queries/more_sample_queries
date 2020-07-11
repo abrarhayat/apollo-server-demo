@@ -1,0 +1,17 @@
+query {
+  allUsers(olderThan: 30) {
+    name
+    age
+    skills {
+      name
+      proficiency
+    }
+  }
+
+  first: user(id: "##$#$%REFDDFDSF") {
+    name
+  }
+  second: user(id: "##$#$%REFDDFDSdfdfF") {
+    name
+  }
+}
