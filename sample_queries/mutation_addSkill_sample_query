@@ -1,0 +1,14 @@
+mutation {
+  addSkillToUserWithID(
+    userID: "3ff92a7744f99"
+    skillName: "Java"
+    skillProficiency: 9
+  ) {
+    name
+    age
+    skills {
+      name
+      proficiency
+    }
+  }
+}

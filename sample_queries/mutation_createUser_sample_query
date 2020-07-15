@@ -1,0 +1,7 @@
+mutation {
+  createNewUser(name: "Andrew Barnard", age: 26) {
+    name
+    age
+    id
+  }
+}

@@ -10,7 +10,7 @@ posts = [{ title: 'QraphQL', content: 'Demo for graphql', id: '#$%$%$%$dse' }, {
 { title: 'Test Post1', content: 'Demo for Post1', id: '#$%$%$%$dse$#$' }, { title: 'Test Post2', content: 'Demo For Post2', id: 'DFDF#$#$#$#' }]
 
 function writeJSONToFile(destinationDir, object) {
-    fs.writeFile(`./${destinationDir}`, JSON.stringify(object), err => {
+    fs.writeFile(`./${destinationDir}`, JSON.stringify(object, null, 2), err => {
         if (err) {
             console.log('Error writing file', err)
         } else {
@@ -25,7 +25,11 @@ function readDataFromJSON(fileDir) {
     return result;
 }
 
-methods = { writeJSONToFile, readDataFromJSON };
+function generateRandomID() {
+    return (Math.random()).toString(16).substring(2, 25);
+}
+
+methods = { writeJSONToFile, readDataFromJSON, generateRandomID };
 //console.log(JSON.stringify(readDataFromJSON('data/users.json')));
 //writeJSONToFile('test.json', posts)
 
